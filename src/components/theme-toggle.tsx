@@ -1,7 +1,8 @@
 "use client";
 
 import { Moon, Sun } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export function ThemeToggle() {
   function toggle() {
@@ -11,15 +12,15 @@ export function ThemeToggle() {
   }
 
   return (
-    <Button
-      variant="outline"
-      size="icon"
+    <button
+      type="button"
+      className={cn(buttonVariants({ variant: "outline", size: "icon" }))}
       onClick={toggle}
       aria-label="Toggle dark mode"
       title="Toggle dark mode"
     >
       <Moon className="dark:hidden" />
       <Sun className="hidden dark:block" />
-    </Button>
+    </button>
   );
 }

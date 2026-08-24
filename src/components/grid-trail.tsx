@@ -73,31 +73,31 @@ export function GridTrail() {
           key,
           gx: x,
           gy: y,
-          life: i === 0 ? 1 : 0.55,
+          life: i === 0 ? 1 : 0.7,
           color,
         });
       });
 
       const originX = gx * GRID_SIZE + GRID_SIZE / 2;
       const originY = gy * GRID_SIZE + GRID_SIZE / 2;
-      const count = 3 + Math.floor(Math.random() * 3);
+      const count = 4 + Math.floor(Math.random() * 4);
       for (let i = 0; i < count; i++) {
         const angle = Math.random() * Math.PI * 2;
-        const speed = 0.4 + Math.random() * 1.4;
+        const speed = 0.5 + Math.random() * 1.8;
         particles.push({
           x: originX,
           y: originY,
           vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed - 0.2,
+          vy: Math.sin(angle) * speed - 0.25,
           life: 1,
-          size: 4,
+          size: Math.random() > 0.5 ? 4 : 6,
           color: colorAt(Math.floor(Math.random() * palette.length)),
         });
       }
-      if (particles.length > 160) particles.splice(0, particles.length - 160);
-      if (cells.size > 90) {
+      if (particles.length > 220) particles.splice(0, particles.length - 220);
+      if (cells.size > 120) {
         const extra = [...cells.values()].sort((a, b) => a.life - b.life);
-        extra.slice(0, cells.size - 90).forEach((c) => cells.delete(c.key));
+        extra.slice(0, cells.size - 120).forEach((c) => cells.delete(c.key));
       }
     }
 
@@ -105,15 +105,15 @@ export function GridTrail() {
       draw.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
       for (const cell of [...cells.values()]) {
-        cell.life -= 0.018;
+        cell.life -= 0.01;
         if (cell.life <= 0) {
           cells.delete(cell.key);
           continue;
         }
         const { r, g, b } = hexToRgb(cell.color);
-        draw.fillStyle = `rgba(${r},${g},${b},${cell.life * 0.45})`;
+        draw.fillStyle = `rgba(${r},${g},${b},${cell.life * 0.72})`;
         draw.fillRect(cell.gx * GRID_SIZE, cell.gy * GRID_SIZE, GRID_SIZE, GRID_SIZE);
-        draw.strokeStyle = `rgba(${r},${g},${b},${cell.life * 0.9})`;
+        draw.strokeStyle = `rgba(17,17,17,${cell.life * 0.55})`;
         draw.lineWidth = 1;
         draw.strokeRect(
           cell.gx * GRID_SIZE + 0.5,
@@ -125,7 +125,7 @@ export function GridTrail() {
 
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
-        p.life -= 0.02;
+        p.life -= 0.012;
         p.x += p.vx;
         p.y += p.vy;
         if (p.life <= 0) {
@@ -136,25 +136,27 @@ export function GridTrail() {
         const sx = Math.round(p.x / snap) * snap;
         const sy = Math.round(p.y / snap) * snap;
         const { r, g, b } = hexToRgb(p.color);
-        draw.fillStyle = `rgba(${r},${g},${b},${p.life})`;
+        draw.fillStyle = `rgba(${r},${g},${b},${Math.min(1, p.life + 0.15)})`;
         draw.fillRect(sx, sy, p.size, p.size);
       }
 
       raf = window.requestAnimationFrame(tick);
     }
 
-    function onMove(event: PointerEvent) {
+    function onMove(event: MouseEvent | PointerEvent) {
       stamp(event.clientX, event.clientY);
     }
 
     resize();
     window.addEventListener("resize", resize);
     window.addEventListener("pointermove", onMove, { passive: true });
+    window.addEventListener("mousemove", onMove, { passive: true });
     raf = window.requestAnimationFrame(tick);
 
     return () => {
       window.removeEventListener("resize", resize);
       window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("mousemove", onMove);
       window.cancelAnimationFrame(raf);
     };
   }, []);
@@ -162,7 +164,7 @@ export function GridTrail() {
   return (
     <canvas
       ref={canvasRef}
-      className="pointer-events-none fixed inset-0 z-[1]"
+      className="pointer-events-none fixed inset-0 z-[25] mix-blend-multiply dark:mix-blend-screen"
       aria-hidden
     />
   );

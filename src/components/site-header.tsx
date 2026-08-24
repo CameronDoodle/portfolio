@@ -1,16 +1,10 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
 import { site } from "@/content/site";
 import { cn } from "@/lib/utils";
 
@@ -21,10 +15,18 @@ const nav = [
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-40">
-      <div className="pointer-events-auto mx-auto flex max-w-6xl items-center justify-between px-4 py-5 sm:px-6">
+      <div className="pointer-events-auto relative z-[60] mx-auto flex max-w-6xl items-center justify-between px-4 py-5 sm:px-6">
         <Link
           href="/"
           className="font-heading text-lg tracking-tight text-foreground"
@@ -51,34 +53,34 @@ export function SiteHeader() {
             Contact
           </Button>
         </nav>
-        <Sheet>
-          <SheetTrigger
-            render={
-              <Button
-                variant="ghost"
-                size="icon"
-                className="sm:hidden"
-                aria-label="Open menu"
-              />
-            }
-          >
-            <Menu />
-          </SheetTrigger>
-          <SheetContent side="right" className="bg-background">
-            <SheetHeader>
-              <SheetTitle
-                style={{ fontFamily: "var(--font-heading)" }}
-                className="text-left font-normal"
-              >
-                {site.name}
-              </SheetTitle>
-            </SheetHeader>
-            <div className="mt-8 flex flex-col gap-3 px-4">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="sm:hidden"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          onClick={() => setOpen((value) => !value)}
+        >
+          {open ? <X /> : <Menu />}
+        </Button>
+      </div>
+
+      {open ? (
+        <div className="pointer-events-auto sm:hidden">
+          <button
+            type="button"
+            className="fixed inset-0 z-50 bg-background/80"
+            aria-label="Close menu"
+            onClick={() => setOpen(false)}
+          />
+          <nav className="fixed inset-x-0 top-16 z-50 border-t border-border bg-background px-4 py-6">
+            <div className="flex flex-col gap-4">
               {nav.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   className="text-lg text-muted-foreground hover:text-foreground"
+                  onClick={() => setOpen(false)}
                 >
                   {item.label}
                 </Link>
@@ -90,9 +92,9 @@ export function SiteHeader() {
                 Contact
               </a>
             </div>
-          </SheetContent>
-        </Sheet>
-      </div>
+          </nav>
+        </div>
+      ) : null}
     </header>
   );
 }

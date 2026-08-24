@@ -9,11 +9,11 @@ import {
 import { cn } from "@/lib/utils";
 
 const shadows: Record<Discipline, string> = {
-  Games: "hard-shadow-magenta",
-  Art: "hard-shadow-cyan",
-  Music: "hard-shadow-yellow",
-  Hardware: "hard-shadow-red",
-  Video: "hard-shadow",
+  Games: "hard-shadow-punch",
+  Art: "hard-shadow-electric",
+  Music: "hard-shadow-sun",
+  Hardware: "hard-shadow-blaze",
+  Video: "hard-shadow-violet",
 };
 
 export function WorkCard({
@@ -30,7 +30,7 @@ export function WorkCard({
     <Link
       href={`/work/${work.slug}`}
       className={cn(
-        "group relative block overflow-hidden border-[3px] border-ink bg-white",
+        "group relative block overflow-hidden border-[3px] border-ink bg-card",
         shadow,
         large ? "aspect-[16/9] sm:aspect-[2/1]" : "aspect-[16/10]"
       )}
@@ -43,7 +43,7 @@ export function WorkCard({
         className="object-cover"
         priority={large}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-3 sm:p-4">
         <div className="flex flex-wrap gap-1.5">
           {work.disciplines.map((d) => {

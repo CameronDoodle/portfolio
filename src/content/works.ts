@@ -234,9 +234,9 @@ export const disciplineColors: Record<
   Discipline,
   { fill: string; text: string; hex: string }
 > = {
-  Games: { fill: "bg-magenta", text: "text-black", hex: "#ff2bd6" },
-  Art: { fill: "bg-cyan", text: "text-black", hex: "#00e5ff" },
-  Music: { fill: "bg-flash-yellow", text: "text-black", hex: "#ffe600" },
-  Hardware: { fill: "bg-flash-red", text: "text-white", hex: "#ff3b30" },
-  Video: { fill: "bg-black", text: "text-cyan", hex: "#111111" },
+  Games: { fill: "bg-punch", text: "text-white", hex: "#ff006d" },
+  Art: { fill: "bg-electric", text: "text-black", hex: "#01befe" },
+  Music: { fill: "bg-sun", text: "text-black", hex: "#ffdd00" },
+  Hardware: { fill: "bg-blaze", text: "text-black", hex: "#ff7d00" },
+  Video: { fill: "bg-violet", text: "text-white", hex: "#8f00ff" },
 };

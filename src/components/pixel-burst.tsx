@@ -1,22 +1,22 @@
 import { cn } from "@/lib/utils";
 
 const tiles = [
-  "bg-magenta",
-  "bg-cyan",
-  "bg-flash-yellow",
-  "bg-flash-red",
-  "bg-white",
+  "bg-electric",
+  "bg-sun",
+  "bg-blaze",
+  "bg-punch",
+  "bg-lime",
+  "bg-violet",
+  "bg-background",
   "bg-grey",
-  "bg-cyan",
-  "bg-magenta",
-  "bg-flash-red",
-  "bg-flash-yellow",
-  "bg-black",
-  "bg-white",
-  "bg-magenta",
-  "bg-grey",
-  "bg-cyan",
-  "bg-flash-yellow",
+  "bg-punch",
+  "bg-electric",
+  "bg-lime",
+  "bg-sun",
+  "bg-violet",
+  "bg-blaze",
+  "bg-electric",
+  "bg-punch",
 ];
 
 export function PixelBurst({ className }: { className?: string }) {

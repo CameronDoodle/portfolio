@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Silkscreen } from "next/font/google";
-import { SiteHeader } from "@/components/site-header";
+import { GridTrail } from "@/components/grid-trail";
 import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -29,16 +30,25 @@ export const metadata: Metadata = {
   description: site.tagline,
 };
 
+const themeBoot = `(function(){try{if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}})();`;
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${pixel.variable} h-full antialiased`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeBoot }} />
+      </head>
       <body className="pixel-grid flex min-h-full flex-col bg-background font-sans text-foreground">
-        <SiteHeader />
-        <div className="flex flex-1 flex-col">{children}</div>
-        <SiteFooter />
+          <GridTrail />
+          <SiteHeader />
+          <div className="relative z-[2] flex flex-1 flex-col">{children}</div>
+          <div className="relative z-[2]">
+            <SiteFooter />
+          </div>
       </body>
     </html>
   );

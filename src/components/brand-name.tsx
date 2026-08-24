@@ -12,7 +12,7 @@ export function BrandName({
 }) {
   return (
     <span className={cn("inline-flex flex-wrap gap-x-[0.35em]", className)}>
-      <span className={cn("text-magenta", firstClassName)}>{site.firstName}</span>
+      <span className={cn("text-punch", firstClassName)}>{site.firstName}</span>
       <span className={cn("text-grey", lastClassName)}>{site.lastName}</span>
     </span>
   );

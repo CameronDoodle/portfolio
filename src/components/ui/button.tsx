@@ -4,21 +4,21 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 items-center justify-center rounded-none border-[3px] border-ink bg-clip-padding text-sm font-medium whitespace-nowrap transition-none outline-none select-none focus-visible:ring-0 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-magenta active:translate-x-[2px] active:translate-y-[2px] active:shadow-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "group/button inline-flex shrink-0 items-center justify-center rounded-none border-[3px] border-ink bg-clip-padding text-sm font-medium whitespace-nowrap transition-none outline-none select-none focus-visible:ring-0 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-punch active:translate-x-[2px] active:translate-y-[2px] active:shadow-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
         default:
-          "bg-magenta text-ink shadow-[4px_4px_0_0_#111111] hover:bg-cyan",
+          "bg-punch text-white shadow-[4px_4px_0_0_var(--ink)] hover:bg-electric hover:text-ink",
         outline:
-          "border-ink bg-white text-ink shadow-[4px_4px_0_0_#111111] hover:bg-flash-yellow",
+          "border-ink bg-background text-ink shadow-[4px_4px_0_0_var(--ink)] hover:bg-sun",
         secondary:
-          "bg-flash-yellow text-ink shadow-[4px_4px_0_0_#111111] hover:bg-magenta",
+          "bg-sun text-ink shadow-[4px_4px_0_0_var(--ink)] hover:bg-lime",
         ghost:
           "border-transparent shadow-none hover:border-ink hover:bg-muted",
         destructive:
-          "bg-flash-red text-white shadow-[4px_4px_0_0_#111111] hover:bg-magenta",
-        link: "border-transparent shadow-none text-magenta underline-offset-4 hover:underline",
+          "bg-blaze text-ink shadow-[4px_4px_0_0_var(--ink)] hover:bg-punch hover:text-white",
+        link: "border-transparent shadow-none text-punch underline-offset-4 hover:underline",
       },
       size: {
         default:

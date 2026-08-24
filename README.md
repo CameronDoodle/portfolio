@@ -1,6 +1,6 @@
 # Cameron Grey — Game Studio Portfolio
 
-A light, high-contrast portfolio for studio applications: white and grey base, pixel type, thick black outlines, and magenta / cyan / yellow / red accents. Game work leads; art, music, hardware, and video sit in the same archive.
+A light, high-contrast portfolio for studio applications: white and grey base (with a dark-mode toggle), pixel type, thick outlines, and a six-color accent set (`#01befe` `#ffdd00` `#ff7d00` `#ff006d` `#adff02` `#8f00ff`). Game work leads; art, music, hardware, and video sit in the same archive.
 
 The featured projects in this repo are **sample placeholders** so the site is visually complete. Replace them with real work before you send the URL.
 

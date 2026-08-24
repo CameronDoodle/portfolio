@@ -35,7 +35,7 @@ export default async function WorkCasePage({
   return (
     <main className="flex-1">
       <section className="mx-auto w-full max-w-6xl px-4 pt-28 pb-8 sm:px-6">
-        <div className="relative aspect-[16/9] overflow-hidden border-[3px] border-ink bg-white hard-shadow-magenta sm:aspect-[2/1]">
+        <div className="relative aspect-[16/9] overflow-hidden border-[3px] border-ink bg-card hard-shadow-punch sm:aspect-[2/1]">
           <Image
             src={work.cover}
             alt={work.coverAlt}
@@ -73,20 +73,20 @@ export default async function WorkCasePage({
         <div>
           <p className="text-xl text-ink">{work.summary}</p>
           <dl className="mt-10 space-y-8">
-            <div className="border-[3px] border-ink bg-white p-4 hard-shadow-cyan">
-              <dt className="font-heading text-[10px] text-magenta uppercase">
+            <div className="border-[3px] border-ink bg-card p-4 hard-shadow-electric">
+              <dt className="font-heading text-[10px] text-punch uppercase">
                 Problem
               </dt>
               <dd className="mt-2 text-grey">{work.problem}</dd>
             </div>
-            <div className="border-[3px] border-ink bg-white p-4 hard-shadow-yellow">
+            <div className="border-[3px] border-ink bg-card p-4 hard-shadow-sun">
               <dt className="font-heading text-[10px] text-ink uppercase">
                 What I made
               </dt>
               <dd className="mt-2 text-grey">{work.made}</dd>
             </div>
-            <div className="border-[3px] border-ink bg-white p-4 hard-shadow-red">
-              <dt className="font-heading text-[10px] text-flash-red uppercase">
+            <div className="border-[3px] border-ink bg-card p-4 hard-shadow-blaze">
+              <dt className="font-heading text-[10px] text-blaze uppercase">
                 Outcome
               </dt>
               <dd className="mt-2 text-grey">{work.outcome}</dd>
@@ -98,9 +98,9 @@ export default async function WorkCasePage({
             ))}
           </div>
         </div>
-        <aside className="space-y-6 border-[3px] border-ink bg-white p-4 hard-shadow lg:pt-4">
+        <aside className="space-y-6 border-[3px] border-ink bg-card p-4 hard-shadow lg:pt-4">
           <div>
-            <p className="font-heading text-[10px] text-magenta uppercase">
+            <p className="font-heading text-[10px] text-punch uppercase">
               Tools
             </p>
             <ul className="mt-3 space-y-1 text-sm text-grey">
@@ -111,7 +111,7 @@ export default async function WorkCasePage({
           </div>
           {work.links.length > 0 ? (
             <div>
-              <p className="font-heading text-[10px] text-cyan uppercase">
+              <p className="font-heading text-[10px] text-electric uppercase">
                 Links
               </p>
               <ul className="mt-3 space-y-2">
@@ -119,7 +119,7 @@ export default async function WorkCasePage({
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      className="text-sm text-ink underline decoration-magenta decoration-2 underline-offset-4 hover:text-magenta"
+                      className="text-sm text-ink underline decoration-punch decoration-2 underline-offset-4 hover:text-punch"
                     >
                       {link.label}
                     </a>

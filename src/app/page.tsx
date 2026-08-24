@@ -14,7 +14,7 @@ export default function Home() {
     <main className="flex-1">
       <section className="mx-auto grid w-full max-w-6xl items-center gap-10 px-4 pt-28 pb-16 sm:px-6 sm:pt-32 sm:pb-20 lg:grid-cols-[1.2fr_0.8fr]">
         <div>
-          <p className="animate-fade-up inline-block border-[3px] border-ink bg-flash-yellow px-2 py-1 font-heading text-[10px] uppercase sm:text-xs">
+          <p className="animate-fade-up inline-block border-[3px] border-ink bg-sun px-2 py-1 font-heading text-[10px] uppercase sm:text-xs">
             Portfolio
           </p>
           <h1 className="animate-fade-up mt-5 text-4xl sm:text-6xl">
@@ -49,8 +49,8 @@ export default function Home() {
           </div>
         </div>
         <div className="relative mx-auto w-full max-w-sm">
-          <div className="absolute -top-4 -left-4 size-10 border-[3px] border-ink bg-cyan" />
-          <div className="absolute -right-3 -bottom-3 size-8 border-[3px] border-ink bg-flash-red" />
+          <div className="absolute -top-4 -left-4 size-10 border-[3px] border-ink bg-electric" />
+          <div className="absolute -right-3 -bottom-3 size-8 border-[3px] border-ink bg-blaze" />
           <PixelBurst className="hard-shadow w-full" />
         </div>
       </section>
@@ -58,7 +58,7 @@ export default function Home() {
       <section className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
-            <p className="inline-block border-[3px] border-ink bg-cyan px-2 py-1 font-heading text-[10px] uppercase">
+            <p className="inline-block border-[3px] border-ink bg-lime px-2 py-1 font-heading text-[10px] text-ink uppercase">
               Featured
             </p>
             <h2 className="mt-3 text-2xl sm:text-3xl">Selected work</h2>
@@ -77,7 +77,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t-[3px] border-ink bg-white">
+      <section className="border-t-[3px] border-ink bg-background">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-14 sm:flex-row sm:items-end sm:justify-between sm:px-6">
           <div className="max-w-xl">
             <h2 className="text-2xl sm:text-3xl">Looking for a studio seat</h2>

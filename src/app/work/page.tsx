@@ -24,7 +24,7 @@ export default async function WorkPage({
 
   return (
     <main className="mx-auto w-full max-w-6xl flex-1 px-4 pt-28 pb-20 sm:px-6">
-      <p className="inline-block border-[3px] border-ink bg-magenta px-2 py-1 font-heading text-[10px] uppercase">
+      <p className="inline-block border-[3px] border-ink bg-punch px-2 py-1 font-heading text-[10px] text-white uppercase">
         Archive
       </p>
       <h1 className="mt-4 text-3xl sm:text-5xl">Work</h1>
@@ -38,7 +38,7 @@ export default async function WorkPage({
         </Suspense>
       </div>
       {items.length === 0 ? (
-        <p className="mt-16 border-[3px] border-dashed border-ink bg-white px-6 py-16 text-center text-grey">
+        <p className="mt-16 border-[3px] border-dashed border-ink bg-background px-6 py-16 text-center text-grey">
           Nothing in {active} yet. Add a project in{" "}
           <code className="text-ink">src/content/works.ts</code>.
         </p>

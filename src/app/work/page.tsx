@@ -24,9 +24,11 @@ export default async function WorkPage({
 
   return (
     <main className="mx-auto w-full max-w-6xl flex-1 px-4 pt-28 pb-20 sm:px-6">
-      <p className="text-xs tracking-[0.24em] text-tungsten uppercase">Archive</p>
-      <h1 className="mt-3 text-4xl sm:text-5xl">Work</h1>
-      <p className="mt-3 max-w-xl text-muted-foreground">
+      <p className="inline-block border-[3px] border-ink bg-magenta px-2 py-1 font-heading text-[10px] uppercase">
+        Archive
+      </p>
+      <h1 className="mt-4 text-3xl sm:text-5xl">Work</h1>
+      <p className="mt-3 max-w-xl text-grey">
         Filter by discipline. Video and hardware sit next to games because they
         are how the picture, trailers, and tools actually shipped.
       </p>
@@ -36,12 +38,12 @@ export default async function WorkPage({
         </Suspense>
       </div>
       {items.length === 0 ? (
-        <p className="mt-16 border border-dashed border-border px-6 py-16 text-center text-muted-foreground">
+        <p className="mt-16 border-[3px] border-dashed border-ink bg-white px-6 py-16 text-center text-grey">
           Nothing in {active} yet. Add a project in{" "}
-          <code className="text-foreground">src/content/works.ts</code>.
+          <code className="text-ink">src/content/works.ts</code>.
         </p>
       ) : (
-        <div className="mt-10 grid gap-4 md:grid-cols-2">
+        <div className="mt-10 grid gap-8 md:grid-cols-2">
           {items.map((work) => (
             <WorkCard key={work.slug} work={work} />
           ))}

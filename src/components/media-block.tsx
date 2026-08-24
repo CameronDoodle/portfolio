@@ -4,7 +4,7 @@ import type { WorkMedia } from "@/content/works";
 export function MediaBlock({ media }: { media: WorkMedia }) {
   if (media.type === "image") {
     return (
-      <figure className="overflow-hidden bg-card">
+      <figure className="overflow-hidden border-[3px] border-ink bg-white hard-shadow-cyan">
         <div className="relative aspect-[16/10]">
           <Image
             src={media.src}
@@ -20,8 +20,8 @@ export function MediaBlock({ media }: { media: WorkMedia }) {
 
   if (media.type === "audio") {
     return (
-      <figure className="border border-border bg-card px-5 py-6">
-        <figcaption className="mb-3 text-sm text-muted-foreground">
+      <figure className="border-[3px] border-ink bg-flash-yellow px-5 py-6 hard-shadow">
+        <figcaption className="mb-3 font-heading text-xs text-ink">
           {media.title}
         </figcaption>
         <audio className="w-full" controls src={media.src} preload="metadata" />
@@ -32,7 +32,7 @@ export function MediaBlock({ media }: { media: WorkMedia }) {
   if (!media.id) return null;
 
   return (
-    <figure className="overflow-hidden bg-card">
+    <figure className="overflow-hidden border-[3px] border-ink bg-white hard-shadow-magenta">
       <div className="relative aspect-video">
         <iframe
           className="absolute inset-0 h-full w-full"

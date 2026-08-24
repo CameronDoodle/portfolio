@@ -1,6 +1,6 @@
-# Cameron — Game Studio Portfolio
+# Cameron Grey — Game Studio Portfolio
 
-A dark cinematic portfolio for studio applications: games first, with art, music, hardware, and video as part of the same practice. No neon, no HUD chrome.
+A light, high-contrast portfolio for studio applications: white and grey base, pixel type, thick black outlines, and magenta / cyan / yellow / red accents. Game work leads; art, music, hardware, and video sit in the same archive.
 
 The featured projects in this repo are **sample placeholders** so the site is visually complete. Replace them with real work before you send the URL.
 

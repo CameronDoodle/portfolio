@@ -1,8 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import type { Work } from "@/content/works";
+import {
+  disciplineColors,
+  type Discipline,
+  type Work,
+} from "@/content/works";
 import { cn } from "@/lib/utils";
+
+const shadows: Record<Discipline, string> = {
+  Games: "hard-shadow-magenta",
+  Art: "hard-shadow-cyan",
+  Music: "hard-shadow-yellow",
+  Hardware: "hard-shadow-red",
+  Video: "hard-shadow",
+};
 
 export function WorkCard({
   work,
@@ -11,11 +23,15 @@ export function WorkCard({
   work: Work;
   large?: boolean;
 }) {
+  const lead = work.disciplines[0];
+  const shadow = shadows[lead] ?? "hard-shadow";
+
   return (
     <Link
       href={`/work/${work.slug}`}
       className={cn(
-        "group relative block overflow-hidden bg-card",
+        "group relative block overflow-hidden border-[3px] border-ink bg-white",
+        shadow,
         large ? "aspect-[16/9] sm:aspect-[2/1]" : "aspect-[16/10]"
       )}
     >
@@ -24,37 +40,40 @@ export function WorkCard({
         alt={work.coverAlt}
         fill
         sizes={large ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
-        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        className="object-cover"
         priority={large}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-4 sm:p-6">
-        <div className="flex flex-wrap gap-1.5 opacity-90">
-          {work.disciplines.map((d) => (
-            <Badge
-              key={d}
-              variant="outline"
-              className="border-foreground/20 bg-background/30 text-[10px] tracking-wide uppercase backdrop-blur-sm"
-            >
-              {d}
-            </Badge>
-          ))}
+      <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-3 sm:p-4">
+        <div className="flex flex-wrap gap-1.5">
+          {work.disciplines.map((d) => {
+            const color = disciplineColors[d];
+            return (
+              <Badge
+                key={d}
+                variant="outline"
+                className={cn(
+                  "h-auto rounded-none border-[2px] border-ink px-1.5 py-0.5 font-heading text-[9px] uppercase",
+                  color.fill,
+                  color.text
+                )}
+              >
+                {d}
+              </Badge>
+            );
+          })}
         </div>
-        <div className="flex items-end justify-between gap-4">
-          <div>
-            <h3
-              className={cn(
-                "text-foreground",
-                large ? "text-3xl sm:text-4xl" : "text-2xl"
-              )}
-            >
-              {work.title}
-            </h3>
-            <p className="mt-1 max-w-xl text-sm text-muted-foreground opacity-0 transition-opacity duration-300 group-hover:opacity-100 max-sm:opacity-100">
-              {work.role} · {work.year}
-            </p>
-          </div>
-        </div>
+        <h3
+          className={cn(
+            "text-ink",
+            large ? "text-xl sm:text-3xl" : "text-lg sm:text-xl"
+          )}
+        >
+          {work.title}
+        </h3>
+        <p className="text-xs text-grey sm:text-sm">
+          {work.role} · {work.year}
+        </p>
       </div>
     </Link>
   );

@@ -9,7 +9,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-instrument);
+  --font-heading: var(--font-pixel);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -39,51 +39,54 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --color-tungsten: var(--tungsten);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  --color-magenta: #ff2bd6;
+  --color-cyan: #00e5ff;
+  --color-flash-yellow: #ffe600;
+  --color-flash-red: #ff3b30;
+  --color-grey: #6b7280;
+  --color-ink: #111111;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-2xl: 0;
+  --radius-3xl: 0;
+  --radius-4xl: 0;
 }
 
-:root,
-.dark {
-  --background: oklch(0.125 0.012 68);
-  --foreground: oklch(0.93 0.014 82);
-  --card: oklch(0.16 0.012 68);
-  --card-foreground: oklch(0.93 0.014 82);
-  --popover: oklch(0.16 0.012 68);
-  --popover-foreground: oklch(0.93 0.014 82);
-  --primary: oklch(0.74 0.07 72);
-  --primary-foreground: oklch(0.16 0.02 70);
-  --secondary: oklch(0.2 0.012 68);
-  --secondary-foreground: oklch(0.93 0.014 82);
-  --muted: oklch(0.2 0.01 68);
-  --muted-foreground: oklch(0.68 0.02 75);
-  --accent: oklch(0.22 0.018 70);
-  --accent-foreground: oklch(0.93 0.014 82);
-  --destructive: oklch(0.65 0.16 28);
-  --border: oklch(0.3 0.016 70);
-  --input: oklch(0.3 0.016 70);
-  --ring: oklch(0.74 0.07 72);
-  --tungsten: oklch(0.74 0.07 72);
-  --chart-1: oklch(0.74 0.07 72);
-  --chart-2: oklch(0.556 0.02 70);
-  --chart-3: oklch(0.439 0.02 70);
-  --chart-4: oklch(0.371 0.015 70);
-  --chart-5: oklch(0.269 0.012 70);
-  --radius: 0.25rem;
-  --sidebar: oklch(0.16 0.012 68);
-  --sidebar-foreground: oklch(0.93 0.014 82);
-  --sidebar-primary: oklch(0.74 0.07 72);
-  --sidebar-primary-foreground: oklch(0.16 0.02 70);
-  --sidebar-accent: oklch(0.22 0.018 70);
-  --sidebar-accent-foreground: oklch(0.93 0.014 82);
-  --sidebar-border: oklch(0.3 0.016 70);
-  --sidebar-ring: oklch(0.74 0.07 72);
+:root {
+  --background: #ffffff;
+  --foreground: #111111;
+  --card: #ffffff;
+  --card-foreground: #111111;
+  --popover: #ffffff;
+  --popover-foreground: #111111;
+  --primary: #ff2bd6;
+  --primary-foreground: #111111;
+  --secondary: #f3f4f6;
+  --secondary-foreground: #111111;
+  --muted: #f3f4f6;
+  --muted-foreground: #6b7280;
+  --accent: #00e5ff;
+  --accent-foreground: #111111;
+  --destructive: #ff3b30;
+  --border: #111111;
+  --input: #111111;
+  --ring: #ff2bd6;
+  --chart-1: #ff2bd6;
+  --chart-2: #00e5ff;
+  --chart-3: #ffe600;
+  --chart-4: #ff3b30;
+  --chart-5: #6b7280;
+  --radius: 0;
+  --sidebar: #f3f4f6;
+  --sidebar-foreground: #111111;
+  --sidebar-primary: #ff2bd6;
+  --sidebar-primary-foreground: #111111;
+  --sidebar-accent: #00e5ff;
+  --sidebar-accent-foreground: #111111;
+  --sidebar-border: #111111;
+  --sidebar-ring: #ff2bd6;
 }
 
 @layer base {
@@ -101,16 +104,17 @@
   h2,
   h3,
   h4 {
-    font-family: var(--font-heading), ui-serif, Georgia, serif;
+    font-family: var(--font-pixel), ui-sans-serif, system-ui, sans-serif;
     font-weight: 400;
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
+    line-height: 1.25;
   }
 }
 
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -118,30 +122,34 @@
   }
 }
 
-@keyframes ken {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.06);
-  }
-}
-
 .animate-fade-up {
-  animation: fade-up 0.9s ease-out both;
+  animation: fade-up 0.45s steps(6) both;
 }
 
-.animate-ken {
-  animation: ken 18s ease-out forwards;
+.pixel-grid {
+  background-color: #ffffff;
+  background-image:
+    linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+    linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
-.grain-overlay {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  opacity: 0.045;
-  background-image: url("/grain.png");
-  background-size: 180px 180px;
-  mix-blend-mode: overlay;
+.hard-shadow {
+  box-shadow: 6px 6px 0 0 #111111;
+}
+
+.hard-shadow-magenta {
+  box-shadow: 6px 6px 0 0 #ff2bd6;
+}
+
+.hard-shadow-cyan {
+  box-shadow: 6px 6px 0 0 #00e5ff;
+}
+
+.hard-shadow-yellow {
+  box-shadow: 6px 6px 0 0 #ffe600;
+}
+
+.hard-shadow-red {
+  box-shadow: 6px 6px 0 0 #ff3b30;
 }

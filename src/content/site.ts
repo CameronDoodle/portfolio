@@ -1,5 +1,7 @@
 export const site = {
-  name: "Cameron",
+  firstName: "Cameron",
+  lastName: "Grey",
+  name: "Cameron Grey",
   role: "Game developer — design, picture, and sound",
   tagline:
     "Game development work across design, picture, and sound — plus the hardware and channels built to ship it.",

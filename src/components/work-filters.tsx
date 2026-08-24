@@ -3,7 +3,11 @@
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { disciplines, type Discipline } from "@/content/works";
+import {
+  disciplineColors,
+  disciplines,
+  type Discipline,
+} from "@/content/works";
 import { cn } from "@/lib/utils";
 
 export function WorkFilters({ active }: { active?: Discipline }) {
@@ -24,20 +28,24 @@ export function WorkFilters({ active }: { active?: Discipline }) {
         size="sm"
         variant={!active ? "default" : "outline"}
         render={<Link href={hrefFor()} />}
-        className={cn(!active && "bg-tungsten text-primary-foreground")}
       >
         All
       </Button>
-      {disciplines.map((d) => (
-        <Button
-          key={d}
-          size="sm"
-          variant={active === d ? "default" : "outline"}
-          render={<Link href={hrefFor(d)} />}
-        >
-          {d}
-        </Button>
-      ))}
+      {disciplines.map((d) => {
+        const color = disciplineColors[d];
+        const on = active === d;
+        return (
+          <Button
+            key={d}
+            size="sm"
+            variant="outline"
+            render={<Link href={hrefFor(d)} />}
+            className={cn(on && color.fill, on && color.text)}
+          >
+            {d}
+          </Button>
+        );
+      })}
     </div>
   );
 }

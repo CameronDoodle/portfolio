@@ -1,0 +1,52 @@
+import { Suspense } from "react";
+import type { Metadata } from "next";
+import { WorkCard } from "@/components/work-card";
+import { WorkFilters } from "@/components/work-filters";
+import {
+  getWorksByDiscipline,
+  isDiscipline,
+  type Discipline,
+} from "@/content/works";
+
+export const metadata: Metadata = {
+  title: "Work",
+  description: "Games, art, music, hardware, and picture — archive.",
+};
+
+export default async function WorkPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ d?: string }>;
+}) {
+  const { d } = await searchParams;
+  const active: Discipline | undefined = d && isDiscipline(d) ? d : undefined;
+  const items = getWorksByDiscipline(active);
+
+  return (
+    <main className="mx-auto w-full max-w-6xl flex-1 px-4 pt-28 pb-20 sm:px-6">
+      <p className="text-xs tracking-[0.24em] text-tungsten uppercase">Archive</p>
+      <h1 className="mt-3 text-4xl sm:text-5xl">Work</h1>
+      <p className="mt-3 max-w-xl text-muted-foreground">
+        Filter by discipline. Video and hardware sit next to games because they
+        are how the picture, trailers, and tools actually shipped.
+      </p>
+      <div className="mt-8">
+        <Suspense>
+          <WorkFilters active={active} />
+        </Suspense>
+      </div>
+      {items.length === 0 ? (
+        <p className="mt-16 border border-dashed border-border px-6 py-16 text-center text-muted-foreground">
+          Nothing in {active} yet. Add a project in{" "}
+          <code className="text-foreground">src/content/works.ts</code>.
+        </p>
+      ) : (
+        <div className="mt-10 grid gap-4 md:grid-cols-2">
+          {items.map((work) => (
+            <WorkCard key={work.slug} work={work} />
+          ))}
+        </div>
+      )}
+    </main>
+  );
+}

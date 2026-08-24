@@ -22,12 +22,37 @@ Open [http://localhost:43123](http://localhost:43123).
 
 Disciplines used as filters: Games, Art, Music, Hardware, Video. Mark `featured: true` and set `featuredOrder` for homepage pieces.
 
-## Deploy for free (Vercel)
+## Deploy for free (GitHub + Vercel)
 
-1. Push this repo to GitHub (already done if you are on this branch).
-2. Sign in at [vercel.com](https://vercel.com) with GitHub (Hobby plan is free).
-3. **Add New Project** → import the repo → Deploy. Leave the Next.js defaults.
-4. You get an `https://….vercel.app` URL for applications. Optional: add a custom domain in the Vercel project settings.
+This Cursor workspace is **not** on GitHub yet. Create a GitHub repo, push `main`, then import it in Vercel.
+
+### 1. Create a GitHub repository
+
+1. Open [github.com/new](https://github.com/new).
+2. Name it something like `portfolio`.
+3. Leave it **empty**: no README, no .gitignore, no license.
+4. Create the repository and copy the HTTPS URL (`https://github.com/YOUR_USER/portfolio.git`).
+
+### 2. Push this project
+
+In the project folder (Cursor terminal or your machine):
+
+```bash
+git remote add github https://github.com/YOUR_USER/portfolio.git
+git push -u github main
+```
+
+If GitHub asks you to sign in, use the browser prompt or a personal access token. After this, `main` on GitHub is the site source.
+
+### 3. Host on Vercel (Hobby is free)
+
+1. Open [vercel.com/new](https://vercel.com/new) while signed in with GitHub.
+2. **Import** the `portfolio` repo.
+3. Leave Framework Preset as **Next.js**. Do not add environment variables.
+4. Click **Deploy**. Wait for the build to finish.
+5. Open the `https://….vercel.app` URL. That is the link for applications.
+
+Later pushes to `github` `main` redeploy automatically. A custom domain is optional under the Vercel project’s **Settings → Domains**.
 
 No env vars are required.
 

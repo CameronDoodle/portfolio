@@ -10,7 +10,7 @@ export const site = {
   bio: "I build playable things and the picture, sound, and tools around them. Video editing, channels, music, and custom hardware show up here because they are how I ship cinematics, trailers, audio, and input — not a second career.",
   about: [
     "Studios hiring for gameplay, cinematics, or a generalist who can carry a slice from prototype to trailer should be able to scan this site in under a minute.",
-    "The featured work is placeholder sample content so the site is complete out of the box. Swap the covers in /public and the entries in src/content/works.ts with your real projects before sending applications.",
+    "The first four case studies are real topics — game jams, a DIY keyboard, and YouTube channels — with placeholder covers and links until media is swapped in. Cut Room and Harbor Jam are still sample entries to replace.",
   ],
   links: {
     youtube: "https://youtube.com",

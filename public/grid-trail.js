@@ -24,19 +24,24 @@
     var raf = 0;
     var lastTs = 0;
     var running = false;
+    var originLeft = 0;
+    var originTop = 0;
 
-    function resize() {
-      surface.width = window.innerWidth;
-      surface.height = window.innerHeight;
-      surface.style.width = window.innerWidth + "px";
-      surface.style.height = window.innerHeight + "px";
+    function syncBox() {
+      var rect = surface.getBoundingClientRect();
+      originLeft = rect.left;
+      originTop = rect.top;
+      var w = Math.max(0, Math.round(rect.width));
+      var h = Math.max(0, Math.round(rect.height));
+      if (surface.width !== w) surface.width = w;
+      if (surface.height !== h) surface.height = h;
       draw.setTransform(1, 0, 0, 1, 0, 0);
     }
 
     function stamp(clientX, clientY) {
       if (document.hidden) return;
-      var gx = (clientX / GRID) | 0;
-      var gy = (clientY / GRID) | 0;
+      var gx = Math.floor((clientX - originLeft) / GRID);
+      var gy = Math.floor((clientY - originTop) / GRID);
       if (gx === lastGx && gy === lastGy) return;
       lastGx = gx;
       lastGy = gy;
@@ -102,8 +107,13 @@
       else start();
     }
 
-    resize();
-    window.addEventListener("resize", resize);
+    syncBox();
+    window.addEventListener("resize", syncBox);
+    window.addEventListener("scroll", syncBox, { passive: true });
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", syncBox);
+      window.visualViewport.addEventListener("scroll", syncBox);
+    }
     document.addEventListener("pointermove", onMove, { capture: true, passive: true });
     document.addEventListener("visibilitychange", onVisibility);
     if (!document.hidden) start();

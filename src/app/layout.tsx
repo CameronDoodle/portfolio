@@ -39,7 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script dangerouslySetInnerHTML={{ __html: themeBoot }} />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${pixel.variable} pixel-grid flex min-h-full flex-col bg-background font-sans text-foreground`}
+        className={`${geistSans.variable} ${geistMono.variable} ${pixel.variable} flex min-h-full flex-col bg-background font-sans text-foreground`}
       >
         <GridTrail />
         <SiteHeader />

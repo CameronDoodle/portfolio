@@ -1,3 +1,4 @@
+// Photos: public/work/<slug>/cover.jpg (card + hero). Other images in that folder are the gallery.
 export const disciplines = [
   "Games",
   "Art",
@@ -28,8 +29,9 @@ export type Work = {
   problem: string;
   made: string;
   outcome: string;
-  cover: string;
+  /** Alt text for `public/work/<slug>/cover.*` */
   coverAlt: string;
+  /** YouTube, audio, or extra remote images. Folder photos are picked up automatically. */
   media: WorkMedia[];
   links: WorkLink[];
 };
@@ -52,15 +54,8 @@ export const works: Work[] = [
       "Each game was built solo in Godot: gameplay systems, pixel art, and original music. The cover is a collage of the full set — proof that I can carry a jam from concept to playable build without splitting the work across a team.",
     outcome:
       "An archive of finished games, not a single title. Each entry shows I can write the code, draw the art, and score the audio — the full stack, on a deadline.",
-    cover: "/covers/godot-jams.jpg",
     coverAlt: "Collage of game jam titles built in Godot.",
-    media: [
-      {
-        type: "image",
-        src: "/covers/godot-jams.jpg",
-        alt: "Collage of Godot game jam games.",
-      },
-    ],
+    media: [],
     links: [{ label: "itch.io (replace)", href: "https://itch.io" }],
   },
   {
@@ -80,15 +75,8 @@ export const works: Work[] = [
       "Each game was built solo in Godot with Blender assets — blockout to final mesh, camera placement, and in-engine lighting. Same jam constraints as the 2D set, but the work lives in 3D space instead of sprite sheets.",
     outcome:
       "A companion to the jam collage that shows the difference: not just more games, but a different craft — 3D layout, camera grammar, and mesh work under the same deadline pressure.",
-    cover: "/covers/jam-3d.jpg",
     coverAlt: "Stills from 3D game jam projects.",
-    media: [
-      {
-        type: "image",
-        src: "/covers/jam-3d.jpg",
-        alt: "3D game jam stills.",
-      },
-    ],
+    media: [],
     links: [{ label: "itch.io (replace)", href: "https://itch.io" }],
   },
   {
@@ -108,30 +96,8 @@ export const works: Work[] = [
       "I designed the PCB in KiCad, laid out the switch matrix and thumb clusters, wrote the QMK firmware, and 3D-printed the case and keycaps. Every part of the stack — electrical, mechanical, and firmware — was learned and built without a kit.",
     outcome:
       "A working daily driver that shows I will invent the tool when nothing off the shelf fits. The photos here are the board, the PCB, the printed case, and the caps.",
-    cover: "/covers/split-keyboard.jpg",
     coverAlt: "DIY split keyboard on a desk.",
-    media: [
-      {
-        type: "image",
-        src: "/covers/split-keyboard.jpg",
-        alt: "Finished split keyboard.",
-      },
-      {
-        type: "image",
-        src: "/covers/split-keyboard-pcb.jpg",
-        alt: "Custom PCB layout.",
-      },
-      {
-        type: "image",
-        src: "/covers/split-keyboard-case.jpg",
-        alt: "3D-printed case halves.",
-      },
-      {
-        type: "image",
-        src: "/covers/split-keyboard-caps.jpg",
-        alt: "3D-printed keycaps.",
-      },
-    ],
+    media: [],
     links: [],
   },
   {
@@ -151,18 +117,12 @@ export const works: Work[] = [
       "I ran multiple channels and adapted the edit to the format: talking-head pacing for long-form, tight loops for shorts, and cinematic grammar for trailers and reels. The reel below is a sample of that range.",
     outcome:
       "Video here is evidence of format fluency — the same eye for picture that shows up in game cinematics, applied across channels that actually grew an audience.",
-    cover: "/covers/channels.jpg",
     coverAlt: "Channel thumbnails and edit stills.",
     media: [
       {
         type: "youtube",
         id: "VIDEO_ID",
         title: "Editing reel (replace VIDEO_ID)",
-      },
-      {
-        type: "image",
-        src: "/covers/channels.jpg",
-        alt: "Channel and edit stills.",
       },
     ],
     links: [
@@ -187,15 +147,8 @@ export const works: Work[] = [
       "A reel structure (hook, loop, payoff) and channel packaging. Drop your YouTube ID into this entry to embed the real cut.",
     outcome:
       "Video here is evidence of cinematic literacy — the same taste used on Ashline’s in-engine camera.",
-    cover: "/covers/cut-room.jpg",
     coverAlt: "Dark red-room still suggesting an edit bay.",
-    media: [
-      {
-        type: "image",
-        src: "/covers/cut-room.jpg",
-        alt: "Cut Room still.",
-      },
-    ],
+    media: [],
     links: [
       { label: "YouTube (replace)", href: "https://youtube.com" },
     ],
@@ -216,15 +169,8 @@ export const works: Work[] = [
       "A single pier, a timing puzzle, and a two-track mix. Replace with your real jam or student piece.",
     outcome:
       "Proof of finish: a page, a build, a date.",
-    cover: "/covers/harbor-jam.jpg",
     coverAlt: "Cool dusk still over a harbor.",
-    media: [
-      {
-        type: "image",
-        src: "/covers/harbor-jam.jpg",
-        alt: "Harbor Jam still.",
-      },
-    ],
+    media: [],
     links: [{ label: "itch.io (replace)", href: "https://itch.io" }],
   },
 ];

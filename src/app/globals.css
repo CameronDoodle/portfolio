@@ -165,6 +165,12 @@
   animation: fade-up 0.45s steps(6) both;
 }
 
+.animate-fade-up[data-settled] {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
 .pixel-grid {
   background-color: var(--background);
   background-image:

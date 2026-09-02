@@ -7,6 +7,7 @@ import {
   isDiscipline,
   type Discipline,
 } from "@/content/works";
+import { attachProjectMedia } from "@/lib/project-media";
 
 export const metadata: Metadata = {
   title: "Work",
@@ -20,7 +21,7 @@ export default async function WorkPage({
 }) {
   const { d } = await searchParams;
   const active: Discipline | undefined = d && isDiscipline(d) ? d : undefined;
-  const items = getWorksByDiscipline(active);
+  const items = getWorksByDiscipline(active).map(attachProjectMedia);
 
   return (
     <main className="mx-auto w-full max-w-6xl flex-1 px-4 pt-28 pb-20 sm:px-6">

@@ -5,9 +5,10 @@ import { Button } from "@/components/ui/button";
 import { WorkCard } from "@/components/work-card";
 import { site } from "@/content/site";
 import { getFeaturedWorks } from "@/content/works";
+import { attachProjectMedia } from "@/lib/project-media";
 
 export default function Home() {
-  const featured = getFeaturedWorks();
+  const featured = getFeaturedWorks().map(attachProjectMedia);
   const [lead, ...rest] = featured;
 
   return (

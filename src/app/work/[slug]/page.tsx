@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { MediaBlock } from "@/components/media-block";
 import { disciplineColors, getWork, works } from "@/content/works";
+import { attachProjectMedia } from "@/lib/project-media";
 import { cn } from "@/lib/utils";
 
 export function generateStaticParams() {
@@ -29,21 +30,24 @@ export default async function WorkCasePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const work = getWork(slug);
-  if (!work) notFound();
+  const entry = getWork(slug);
+  if (!entry) notFound();
+  const work = attachProjectMedia(entry);
 
   return (
     <main className="flex-1">
       <section className="mx-auto w-full max-w-6xl px-4 pt-28 pb-8 sm:px-6">
         <div className="relative aspect-[16/9] overflow-hidden border-[3px] border-ink bg-card hard-shadow-punch sm:aspect-[2/1]">
-          <Image
-            src={work.cover}
-            alt={work.coverAlt}
-            fill
-            priority
-            className="object-cover"
-            sizes="100vw"
-          />
+          {work.cover ? (
+            <Image
+              src={work.cover}
+              alt={work.coverAlt}
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
+            />
+          ) : null}
         </div>
         <div className="mt-8 flex flex-wrap gap-2">
           {work.disciplines.map((d) => {

@@ -47,6 +47,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <div className="relative z-[2]">
           <SiteFooter />
         </div>
+        <script src="/settle-fade-up.js" />
         <script src="/grid-trail.js" defer />
       </body>
     </html>

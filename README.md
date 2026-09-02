@@ -15,9 +15,17 @@ Open [http://localhost:43123](http://localhost:43123).
 
 ## Swap in your work
 
-1. Put stills in `public/covers/` (JPG/PNG/WebP). Audio goes in `public/audio/`.
-2. Edit [`src/content/works.ts`](src/content/works.ts): `slug`, `title`, `year`, `role`, `disciplines`, cover path, problem / made / outcome, links.
-3. To embed a reel, add a media item `{ type: "youtube", id: "VIDEO_ID", title: "…" }`.
+Photos live in a folder per project. The folder name must match the `slug` in [`src/content/works.ts`](src/content/works.ts).
+
+```
+public/work/split-keyboard/cover.jpg
+public/work/split-keyboard/01-pcb.jpg
+public/work/split-keyboard/02-case.jpg
+```
+
+1. Drop images into `public/work/<slug>/` (JPG/PNG/WebP). Name the card/hero `cover` (any of those extensions). Everything else in that folder is a supporting photo on the case-study page, sorted by filename — prefix with `01-`, `02-` to control order. A single image in the folder is treated as the cover even if it is not named `cover`.
+2. You do not need to list those photos in `works.ts`. Edit that file for title, year, role, disciplines, copy, and links.
+3. Audio goes in `public/audio/`. To embed a reel, add `{ type: "youtube", id: "VIDEO_ID", title: "…" }` to that project's `media`.
 4. Edit identity, email, and socials in [`src/content/site.ts`](src/content/site.ts).
 
 Disciplines used as filters: Games, Art, Music, Hardware, Video. Mark `featured: true` and set `featuredOrder` for homepage pieces.

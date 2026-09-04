@@ -1,6 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BrandName } from "@/components/brand-name";
-import { PixelBurst } from "@/components/pixel-burst";
 import { Button } from "@/components/ui/button";
 import { WorkCard } from "@/components/work-card";
 import { site } from "@/content/site";
@@ -52,7 +52,14 @@ export default function Home() {
         <div className="relative mx-auto w-full max-w-sm">
           <div className="absolute -top-4 -left-4 size-10 border-[3px] border-ink bg-electric" />
           <div className="absolute -right-3 -bottom-3 size-8 border-[3px] border-ink bg-blaze" />
-          <PixelBurst className="hard-shadow w-full" />
+          <Image
+            src="/portrait.png"
+            alt={`${site.name} in black and white against a color pixel grid`}
+            width={819}
+            height={1024}
+            priority
+            className="hard-shadow w-full border-[3px] border-ink"
+          />
         </div>
       </section>
 
